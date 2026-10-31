@@ -22,14 +22,14 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     { name: "Contact", link: "#contact", icon: FaEnvelope },
   ];
   return (
-    <div className="fixed z-50 bottom-0 left-0 right-0 flex justify-center">
+    <div className="fixed z-50 bottom-0 left-0 right-0 flex justify-center px-2">
       <motion.nav
         initial={{ y: 100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className="relative w-[95%] max-w-4xl mb-4"
+        className="relative w-full max-w-4xl mb-4"
       >
-        <div className="relative bg-linear-to-r from-red-600 to-red-800 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 px-3 py-2">
+        <div className="relative bg-linear-to-r from-red-600 to-red-800 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 px-1 sm:px-3 py-2">
           <div className="absolute -top-5 right-3">
             <motion.button
               whileHover={{ scale: 1.1 }}
@@ -38,13 +38,13 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               className="p-2 rounded-full bg-gray-900 dark:bg-gray-100 transition-colors backdrop-blur-sm"
             >
               {darkMode ? (
-                <Sun className="w-4 lg:w-5 h-4 lg:h-5 text-black" />
+                <Sun className="w-4 lg:w-5 lg:h-5 text-black" />
               ) : (
-                <Moon className="w-4 lg:w-5 h-4 lg:h-5 text-white" />
+                <Moon className="w-4 lg:w-5 lg:h-5 text-white" />
               )}
             </motion.button>
           </div>
-          <div className="flex items-center justify-around gap-1">
+          <div className="flex items-center justify-between gap-0 sm:gap-1">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = activeTab === item.name;
@@ -55,7 +55,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                   onClick={() => setActiveTab(item.name)}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="flex flex-col items-center gap-0.5 py-1.5 px-2 relative group flex-1"
+                  className="flex flex-col items-center justify-center gap-0.5 py-1.5 px-0.5 sm:px-2 relative group flex-1 min-w-0"
                 >
                   {isActive && (
                     <motion.div
@@ -65,14 +65,14 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                     ></motion.div>
                   )}
                   <Icon
-                    className={`w-5 h-5 transition-all duration-300 ${
+                    className={`w-4 h-4 sm:w-5 sm:h-5 transition-all duration-300 ${
                       isActive
                         ? `text-white`
                         : `text-white/70 group-hover:text-white`
                     }`}
                   />
                   <span
-                    className={`text-{10px} font-medium transition-all duration-300 ${isActive ? `text-white` : `text-white/60 group-hover:text-white `}`}
+                    className={`text-{9px} sm:text-xs font-medium whitespace-nowrap transition-all duration-300 ${isActive ? `text-white` : `text-white/60 group-hover:text-white `}`}
                   >
                     {item.name}
                   </span>
